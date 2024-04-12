@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <title>Menu Button</title>
+    <!---Bootstarp css-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+     <!---Bootstarp js-->
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
+     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+ 
+    <style>
+                 
+* {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+body{
+  background-color:#E1F2F7;
+}
+
+
+.action {
+  position: fixed;
+  top: 10px;
+  right: 30px;
+  box-sizing:border-box;
+  border-radius: 40px;
+  padding: 1px;
+  box-shadow: 5px 6px 14px black;
+  background:white;
+}
+
+.action .profile {
+  position: relative;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.action .profile img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.action .menu {
+  position: absolute;
+  top: 120px;
+  right: -10px;
+  padding: 10px 20px;
+  background: black;
+  width: 200px;
+  box-sizing: 0 5px 25px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  transition: .5s;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.action .menu.active {
+  top: 80px;
+  visibility: visible;
+  opacity: 1;
+}
+
+.action .menu::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  right: 28px;
+  width: 20px;
+  height: 20px;
+  background: #fff;
+  transform: rotate(45deg);
+}
+
+.action .menu h3 {
+  width: 100%;
+  text-align: center;
+  font-size: 18px;
+  padding: 20px 0;
+  font-weight: 500;
+  color: #555;
+  line-height: 1.2em;
+}
+
+.action .menu h3 span {
+  font-size: 14px;
+  color: #cecece;
+  font-weight: 400;
+}
+
+.action .menu ul li {
+  list-style: none;
+  padding: 10px 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+}
+
+.action .menu ul li img {
+  max-width: 20px;
+  margin-right: 10px;
+  opacity: .5;
+  transition: 0.5s;
+}
+
+.action .menu ul li:hover img {
+  opacity: 1;
+}
+
+.action .menu ul li a {
+  display: inline-block;
+  text-decoration: none;
+  color: #555;
+  font-weight: 500;
+  transition: 0.5s;
+}
+
+.action .menu ul li:hover a {
+  color: #eb2366;
+}
+.navbar{
+  height:80px;
+  background-color:darkgreen;
+  box-sizing:border-box;
+  border-radius: 8px;
+  padding: 1px;
+  box-shadow: 5px 6px 14px black;
+ 
+}
+
+.container sup{
+  color:red;
+  font-size:30px;
+  font-family: "Brush Script MT", cursive;
+}
+.container span{
+  color:rgb(238, 196, 27);
+  font-size:40px;
+  font-family: Georgia, serif;
+  font-weight:500px;
+}
+#paroo{
+  color:#E75480;
+  font-size:40px;
+  font-family: Georgia, serif;
+  font-weight:500px;
+}
+
+
+footer{
+  box-sizing:border-box;
+  border-radius: 8px;
+  padding: 1px;
+  box-shadow: 5px 6px 14px black;
+  background-color:darkgreen;
+  position: fixed;
+  width:100%;
+  left: 0;
+  bottom: 0;
+  }
+  .footercontainer{
+  width:100%;
+  height:100px;
+  }
+  footer h3{
+  position:absolute;
+  width:280px;
+  height:60px;
+  left:830px;
+  }
+  footer sup{
+      color:red;
+      font-size:30px;
+      font-family: "Brush Script MT", cursive;
+  }
+  footer span{
+      color:rgb(240, 211, 19);
+      font-size:40px;
+      font-family: Georgia, serif;
+      font-weight:500px;
+  }
+  #paroo{
+      color:#E75480;
+      font-size:40px;
+      font-family: Georgia, serif;
+      font-weight:500px;
+  }
+  .socialicons{
+  display:flex;
+  justify-content:center;
+  padding:50px 8px 8px
+  }
+  .socialicons a{
+  text-decoration:none;
+  padding:10px;
+  margin:10px;
+  border-radius:50%;
+  }
+  .socialicons a i{
+  font-size:1.5em;
+  color:black;
+  opacity:0.9;
+  }
+  .socialicons a:hover{
+  background-color:#111;
+  transition:0.5s
+  }
+  .socialicons a i:hover{
+  color:white;
+  transition:0.5s;
+  }
+  
+
+  
+/* Dropdown container */
+.dropdown {
+  position: relative;
+  display: inline-block;
+  }
+  
+  /* Dropdown button */
+  .dropbtn {
+  background-color: #fff;
+  color: white;
+  border-radius:18px;
+  padding: 8px;
+  font-size: 18px;
+  border: none;
+  cursor: pointer;
+  }
+  
+  /* Links inside the dropdown */
+  .dropbtn a {
+  color: black;
+  padding: 6px 10px;
+  text-decoration: none;
+  display: block;
+  }
+.container1{
+    background-color: rgba(255, 255, 255, 0.234);
+    padding: 65px; /* Adjust padding to decrease container size */
+    border-radius: 30px;
+    box-shadow: 2px 2px 10px rgba(13, 13, 13, 0.3);
+    text-align: center;
+    max-width: 400px;
+    width: 360px;
+    height: 400px; /* Adjust height to decrease container size */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    left: calc(50% - 200px); /* Center horizontally */
+    margin-top: calc(50vh - 270px); /* Center vertically */
+    z-index: 1; /* Ensure login form is above background */
+
+}
+input[type="text"],
+input[type="password"]{
+    width: calc(100% - 8px);
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: rgba(255, 255, 255, 0.155);
+    box-shadow: 2px 2px 5px rgba(57, 56, 56, 0.941);
+}
+
+input[type="submit"]{
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+input[type="checkbox"] {
+  margin-right: 5px;
+}
+
+
+.submit-btn:hover {
+    background-color: #45a049;
+}
+.registeration-link {
+    margin-top: 10px;
+    text-decoration: none; /* Remove text decoration */
+}
+@media(max-width:700px){
+  .footernav ul{
+  flex-direction:column;
+  }
+  .footernav ul li{
+  width:100%;
+  text-align:center;
+  margin:10px
+  }
+  footer h3{
+  width:180px;
+  left:150px;
+  }
+  .footer h3{
+  position:absolute;
+  width:250px;
+  height:60px;
+  left:550px;
+  }
+  .container1{
+    width: 400px;
+    height: 400px; 
+    left: calc(50% - 200px);
+  }
+}
+
+
+
+    </style>
+</head>
+<body>
+  <nav class="navbar">
+      <div class="container">
+          <h3><sup>The</sup><span>KoM</span><span id="paroo">Paro</span></h3>
+      </div>
+  </nav>
+  <div class="container1">  
+    <h2>Login</h2>
+    <form id="login-form" method="POST">
+        {% csrf_token %}
+        <input type="text" id="username" name="username" placeholder="Username" required><br>
+        <input type="password" id="password" name="password" placeholder="Password" required><br><br>
+        <input type="checkbox" id="confirm" name="confirm"> <label for="confirm">Confirm the Credentials</label><br><br>
+        <input type="submit" value="Login" id="submit-btn"><br>
+
+        <div class="registeration-link">
+            <a href="{% url 'register' %}">Register now</a>
+        </div>    
+    </form>
+</div>
+
+  <!-- Footer -->
+  <footer>
+      <h3><sup>The</sup><span>KoM</span><span id="paroo">Paro</span></h3>
+      <div class="footercontainer">
+          <div class="socialicons">
+              <a href=""><i class="fa-brands fa-facebook"></i></a>
+              <a href=""><i class="fa-brands fa-instagram"></i></a>
+              <a href=""><i class="fa-brands fa-google-plus"></i></a>
+              <a href=""><i class="fa-brands fa-youtube"></i></a>
+          </div>
+      </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    document.getElementById("submit-btn").addEventListener("click", function(event) {
+        event.preventDefault();  // Prevent the default form submission
+    
+        var username = document.getElementById("username").value;
+        var password = document.getElementById("password").value;
+        var confirm = document.getElementById("confirm").checked;
+    
+        // Check if any required field is empty
+        if (username === "" || password === "" || !confirm) {
+            alert("Please fill out all required fields and confirm the credentials.");
+            return;  // Stop execution if any field is empty
+        }
+    
+        // AJAX request
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "{% url 'login' %}", true);
+        xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    // Login successful
+                    alert("Login Successful!");
+                    window.location.href = "{% url 'main' %}";  // Redirect to main.html
+                } else if (xhr.status === 401) {
+                    // Unauthorized (invalid credentials)
+                    alert("Invalid credentials. Please try again.");
+                } else {
+                    // Other server errors
+                    alert("Server error. Please try again later.");
+                }
+            }
+        };
+        var formData = "username=" + encodeURIComponent(username) + "&password=" + encodeURIComponent(password) + "&confirm=" + confirm;
+        xhr.send(formData);
+    });
+    </script>
+    
+</body>
+</html>

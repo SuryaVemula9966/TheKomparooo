@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<style>
+                    
+* {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+body{
+    background-color:#E1F2F7;
+}
+.navbar{
+    height:80px;
+    background-color:darkgreen;
+    box-sizing:border-box;
+    border-radius: 8px;
+    padding: 1px;
+    box-shadow: 2px 6px 14px black;
+   
+}
+
+.container sup{
+    color:red;
+    font-size:30px;
+    font-family: "Brush Script MT", cursive;
+}
+.container span{
+    color:rgb(240, 211, 19);
+    font-size:40px;
+    font-family: Georgia, serif;
+    font-weight:500px;
+}
+#paroo{
+    color:#E75480;
+    font-size:40px;
+    font-family: Georgia, serif;
+    font-weight:500px;
+}
+
+
+footer{
+    box-sizing:border-box;
+    border-radius: 8px;
+    padding: 1px;
+    box-shadow: 5px 6px 14px black;
+    background-color:darkgreen;
+    position: fixed;
+    width:100%;
+    left: 0;
+    bottom: 0;
+    }
+    .footercontainer{
+    width:100%;
+    height:100px;
+    
+    }
+    footer h3{
+  position:absolute;
+  width:280px;
+  height:60px;
+  left:830px;
+  }
+    footer sup{
+        color:red;
+        font-size:30px;
+        font-family: "Brush Script MT", cursive;
+    }
+    footer span{
+        color:rgb(240, 211, 19);
+        font-size:40px;
+        font-family: Georgia, serif;
+        font-weight:500px;
+    }
+    #paroo{
+        color:#E75480;
+        font-size:40px;
+        font-family: Georgia, serif;
+        font-weight:500px;
+    }
+    .socialicons{
+    display:flex;
+    justify-content:center;
+    padding:50px 8px 8px
+    }
+    .socialicons a{
+    text-decoration:none;
+    padding:10px;
+    margin:10px;
+    border-radius:50%;
+    }
+    .socialicons a i{
+    font-size:1.5em;
+    color:black;
+    opacity:0.9;
+    }
+    .socialicons a:hover{
+    background-color:#111;
+    transition:0.5s
+    }
+    .socialicons a i:hover{
+    color:white;
+    transition:0.5s;
+    }
+    @media(max-width:600px){
+        .footernav ul{
+        flex-direction:column;
+        }
+        .footernav ul li{
+        width:100%;
+        text-align:center;
+        margin:10px
+        }
+        footer h3{
+        width:180px;
+        left:150px;
+        }
+        .footer h3{
+        position:absolute;
+        width:250px;
+        height:60px;
+        left:600px;
+        }
+    }
+   
+
+     .profile-container {
+        text-align:center;
+        max-width: 300px;
+        margin: 50px auto;
+        padding: 25px;
+        background-color:rgba(255,255,255,0.234);
+        border-radius: 30px;
+        box-shadow: 3px 3px 10px rgba(35, 35, 35, 0.3);
+        align-items:center;
+        height:480px;
+       
+       
+        
+      }
+      .profile-img {
+        width: 150px;
+        height: 150px;
+        border-radius: 80%;
+        background-color: #ccc; /* Placeholder color */
+        margin: 0 auto;
+        position: relative;
+        overflow: hidden; /* Ensure the plus icon is within the circle */
+        
+      }
+      .profile-img img {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+       
+      }
+      .profile-img .plus-icon {
+        position: absolute;
+        top: 80%;
+        right: 17px; /* Adjust the position */
+        transform: translateY(-50%);
+        width: 30px;
+        height: 30px;
+        
+        font-size:30px;
+        border-radius: 50%;
+       
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+      }
+      .profile-info {
+        margin-top: 20px;
+      }
+      .profile-info input {
+        margin-bottom: 10px;
+        padding: 10px;
+        width: 200px;
+        display: block;
+        margin: 10px auto;
+        border: 1px solid #ccc;
+        border-radius: 7px;
+        background-color:rgb(225,225,225,0.155);
+        box-shadow:2px 2px 5px rgb(57,56,56,0.941);
+      }
+      .btn {
+        padding: 10px 20px;
+        margin: 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      .btn-edit {
+        background-color: #007bff;
+        color: #fff;
+      }
+      .btn-submit {
+        background-color:rgb(4, 170, 4);
+        color: #fff;
+      }
+      .plus-icon{
+         color:#fff;
+         transform:translateX(-100%);
+         background-color:rgb(173,172,172,0.801);
+         box-shadow:2px 4px 4px rgb(0,0,0,0.644);
+          opacity:3;
+      }
+     
+        </style>
+</head>
+    
+
+<body>
+    <div class="profile-container">
+        <h2>My Profile</h2>
+        <form id="profileForm"  onsubmit="handleSubmit(); return false;" enctype="multipart/from-data">
+        <div class="profile-img" id="profileImgContainer">
+            <img id="imagePreview" src="placeholder.jpg" alt="">
+            
+
+        </div>
+            <div class="profile-info">
+
+            
+
+            <div class="profile-info">
+                <div>
+                    <input type="text" placeholder="Username" value="{{ user.username }}" id="usernameInput" required>
+                </div>
+                <div>
+                    <input type="tel" placeholder="Mobile number" value="{{ user.mobile_number }}" id="mobileInput" required maxlength="10">
+                </div>
+                <div>
+                    <input type="email" placeholder="Email" value="{{ user.email }}" id="emailInput" required>
+                </div>
+                <input type="file" name="profile_image" id="imageInput"><br>
+                 
+            </div>
+            <button type="button" class="btn btn-edit" onclick="enableEdit()">Edit</button>
+            <button type="submit" class="btn btn-submit">Save</button>
+        </form>
+    </div>
+
+    
+    <footer>
+        <h3><sup>The</sup><span>KoM</span><span id="paroo">Paro</span></h3>
+        <div class="footercontainer">
+            <div class="socialicons">
+                <a href=""><i class="fab fa-facebook"></i></a>
+                <a href=""><i class="fab fa-instagram"></i></a>
+                <a href=""><i class="fab fa-google-plus"></i></a>
+                <a href=""><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+
+
+        document.getElementById('imageInput').addEventListener('change', function() {
+            const file = this.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('imagePreview').src = e.target.result;
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+        document.getElementById('uploadBtn').addEventListener('click', function() {
+            document.getElementById('fileInput').click();
+        });
+
+        document.getElementById('fileInput').addEventListener('change', function() {
+            const file = this.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('profileImg').src = e.target.result;
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+
+        function enableEdit() {
+            document.getElementById('usernameInput').disabled = false;
+            document.getElementById('mobileInput').disabled = false;
+            document.getElementById('emailInput').disabled = false;
+        }
+
+        function handleSubmit() {
+            const usernameInput = document.getElementById('usernameInput');
+            const mobileInput = document.getElementById('mobileInput');
+            const emailInput = document.getElementById('emailInput');
+
+            if (usernameInput.value === '' || mobileInput.value === '' || emailInput.value === '') {
+                alert("Please fill all fields.");
+            } else {
+                const formData = new FormData();
+                formData.append('username', usernameInput.value);
+                formData.append('mobile_number', mobileInput.value);
+                formData.append('email', emailInput.value);
+                formData.append('csrfmiddlewaretoken', '{{ csrf_token }}');
+
+                fetch('{% url "profile" %}', {
+                    method: 'POST',
+                    body: formData,
+                })
+                .then(response => {
+                    if (response.ok) {
+                        alert("Profile updated successfully!");
+                        window.location.href = "{% url 'main' %}"; // Redirect to main page
+                    } else {
+                        throw new Error('Failed to update profile.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Failed to update profile.');
+                });
+            }
+        }
+    </script>
+</body>
+</html>

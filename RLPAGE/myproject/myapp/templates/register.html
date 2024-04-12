@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <title>Menu Button</title>
+    <!---Bootstarp css-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+     <!---Bootstarp js-->
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
+     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+ 
+    <style>
+                 
+* {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+body{
+  background-color:#E1F2F7;
+}
+
+
+.action {
+  position: fixed;
+  top: 10px;
+  right: 30px;
+  box-sizing:border-box;
+  border-radius: 40px;
+  padding: 1px;
+  box-shadow: 5px 6px 14px black;
+  background:white;
+}
+
+.action .profile {
+  position: relative;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.action .profile img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.action .menu {
+  position: absolute;
+  top: 120px;
+  right: -10px;
+  padding: 10px 20px;
+  background: black;
+  width: 200px;
+  box-sizing: 0 5px 25px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  transition: .5s;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.action .menu.active {
+  top: 80px;
+  visibility: visible;
+  opacity: 1;
+}
+
+.action .menu::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  right: 28px;
+  width: 20px;
+  height: 20px;
+  background: #fff;
+  transform: rotate(45deg);
+}
+
+.action .menu h3 {
+  width: 100%;
+  text-align: center;
+  font-size: 18px;
+  padding: 20px 0;
+  font-weight: 500;
+  color: #555;
+  line-height: 1.2em;
+}
+
+.action .menu h3 span {
+  font-size: 14px;
+  color: #cecece;
+  font-weight: 400;
+}
+
+.action .menu ul li {
+  list-style: none;
+  padding: 10px 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+}
+
+.action .menu ul li img {
+  max-width: 20px;
+  margin-right: 10px;
+  opacity: .5;
+  transition: 0.5s;
+}
+
+.action .menu ul li:hover img {
+  opacity: 1;
+}
+
+.action .menu ul li a {
+  display: inline-block;
+  text-decoration: none;
+  color: #555;
+  font-weight: 500;
+  transition: 0.5s;
+}
+
+.action .menu ul li:hover a {
+  color: #eb2366;
+}
+.navbar{
+  height:80px;
+  background-color:darkgreen;
+  box-sizing:border-box;
+  border-radius: 8px;
+  padding: 1px;
+  box-shadow: 5px 6px 14px black;
+ 
+}
+
+.container sup{
+  color:red;
+  font-size:30px;
+  font-family: "Brush Script MT", cursive;
+}
+.container span{
+  color:rgb(238, 196, 27);
+  font-size:40px;
+  font-family: Georgia, serif;
+  font-weight:500px;
+}
+#paroo{
+  color:#E75480;
+  font-size:40px;
+  font-family: Georgia, serif;
+  font-weight:500px;
+}
+
+
+footer{
+  box-sizing:border-box;
+  border-radius: 8px;
+  padding: 1px;
+  box-shadow: 5px 6px 14px black;
+  background-color:darkgreen;
+  position: fixed;
+  width:100%;
+  left: 0;
+  bottom: 0;
+  }
+  .footercontainer{
+  width:100%;
+  height:100px;
+  }
+  footer h3{
+  position:absolute;
+  width:280px;
+  height:60px;
+  left:830px;
+  }
+  footer sup{
+      color:red;
+      font-size:30px;
+      font-family: "Brush Script MT", cursive;
+  }
+  footer span{
+      color:rgb(240, 211, 19);
+      font-size:40px;
+      font-family: Georgia, serif;
+      font-weight:500px;
+  }
+  #paroo{
+      color:#E75480;
+      font-size:40px;
+      font-family: Georgia, serif;
+      font-weight:500px;
+  }
+  .socialicons{
+  display:flex;
+  justify-content:center;
+  padding:50px 8px 8px
+  }
+  .socialicons a{
+  text-decoration:none;
+  padding:10px;
+  margin:10px;
+  border-radius:50%;
+  }
+  .socialicons a i{
+  font-size:1.5em;
+  color:black;
+  opacity:0.9;
+  }
+  .socialicons a:hover{
+  background-color:#111;
+  transition:0.5s
+  }
+  .socialicons a i:hover{
+  color:white;
+  transition:0.5s;
+  }
+
+  
+/* Dropdown container */
+.dropdown {
+  position: relative;
+  display: inline-block;
+  }
+  
+  /* Dropdown button */
+  .dropbtn {
+  background-color: #fff;
+  color: white;
+  border-radius:18px;
+  padding: 8px;
+  font-size: 18px;
+  border: none;
+  cursor: pointer;
+  }
+  
+  /* Links inside the dropdown */
+  .dropbtn a {
+  color: black;
+  padding: 6px 10px;
+  text-decoration: none;
+  display: block;
+  }
+
+  .form-group {
+    margin-bottom: 10px;
+}
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 300px; /* Adjusted width */
+    height: 40px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 7px;
+    background-color: rgba(225, 225, 225, 0.155);
+    box-shadow: 2px 2px 5px rgba(57, 56, 56, 0.941);
+}
+input[type="checkbox"] {
+  margin-right: 5px;
+}
+.container1{
+  background-color: rgba(255, 255, 255, 0.234);
+  padding: 65px; /* Adjust padding to decrease container size */
+  border-radius: 30px;
+  box-shadow: 2px 2px 10px rgba(13, 13, 13, 0.3);
+  text-align: center;
+  max-width: 400px;
+  width: 400px;
+  height: 440px; /* Adjust height to decrease container size */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  left: calc(50% - 200px); /* Center horizontally */
+  margin-top: calc(50vh - 310px); /* Center vertically */
+  z-index: 1; /* Ensure login form is above background */
+}
+input[type="submit"] {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #555;
+}
+.popup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.popup p {
+  margin-bottom: 10px;
+}
+
+.popup a {
+  color: #fff;
+  text-decoration: none;
+}
+
+#register {
+  background-color: rgb(8, 183, 8);
+  border-radius: 50px; /* Corrected typo */
+  color: white;
+  font-size: 15px;
+}
+.form-group{
+  position:relative;
+  
+}
+.password-match-message {
+  color: red;
+ 
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(-20%, 40%);
+}
+.error-message {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: red;
+  transform: translate(-9%, 40%);
+}
+.error {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: red;
+  transform: translate(-9%,40%);
+}
+.logins{
+  margin-top: 10px;
+  text-decoration: none; /* Remove text decoration */
+}
+
+.form-group {
+            margin-bottom: 10px;
+            position: relative;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: 300px;
+            height: 40px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 7px;
+            background-color: rgba(225, 225, 225, 0.155);
+            box-shadow: 2px 2px 5px rgba(57, 56, 56, 0.941);
+        }
+
+        input[type="checkbox"] {
+            margin-right: 5px;
+        }
+
+        .container1 {
+            background-color: rgba(255, 255, 255, 0.234);
+            padding: 65px;
+            border-radius: 30px;
+            box-shadow: 2px 2px 10px rgba(13, 13, 13, 0.3);
+            text-align: center;
+            max-width: 400px;
+            width: 400px;
+            height: 440px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            left: calc(50% - 200px);
+            margin-top: calc(50vh - 310px);
+            z-index: 1;
+        }
+
+        input[type="submit"] {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 14px;
+            margin-top: 5px;
+            text-align: left;
+        }
+ /* Style for the prefix */
+.prefix {
+    position: absolute;
+    top: 10px; /* Adjust this value to vertically center the prefix */
+    left: 10px; /* Adjust this value to change the distance from the left */
+    color: #555; /* Adjust the color as needed */
+    pointer-events: none; /* Prevent clicking on the prefix */
+    z-index: 1; /* Ensure the prefix appears above the input */
+}
+
+/* Adjust the input field to accommodate the prefix */
+.input-field {
+    width: calc(100% - 40px); /* Subtract the width of the prefix and padding */
+    height: 40px;
+    padding: 10px;
+    padding-left: 40px; /* Adjust this value to leave space for the prefix */
+    border: 1px solid #ccc;
+    border-radius: 7px;
+    background-color: rgba(225, 225, 225, 0.155);
+    box-shadow: 2px 2px 5px rgba(57, 56, 56, 0.941);
+}
+/* Adjust the width of the mobile number input field to match the username input field */
+#mobile {
+    width: 300px; /* Adjust the width as needed */
+}
+
+
+
+  @media(max-width:700px){
+      .footernav ul{
+      flex-direction:column;
+      }
+      .footernav ul li{
+      width:100%;
+      text-align:center;
+      margin:10px
+      }
+       footer h3{
+        position:absolute;
+        width:250px;
+        height:60px;
+        left:80px;
+      }
+    }
+
+  
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <h3><sup>The</sup><span>KoM</span><span id="paroo">Paro</span></h3>
+           
+           
+        </div>
+    
+        </div>
+      </nav>
+
+      <div class="container1"> 
+        <form id="registrationForm" method="post" action="{% url 'register' %}">
+            {% csrf_token %}
+            <h2> Registration</h2>
+            <div class="form-group">
+                <input type="text" id="username" name="username" placeholder="Username" required>
+                <span class="error-message" id="username_error" name="username_error"></span>
+            </div>
+            <div class="form-group">
+              <span class="prefix"></span>
+              <input type="text" id="mobile" name="mobile_number" placeholder="Mobile Number" required>
+              <span class="error-message" id="mobile_error" name="mobile_error"></span>
+          </div>
+            <div class="form-group">
+                <input type="email" id="email" name="email" placeholder="Email" required>
+                <span class="error-message" id="email_error" name="email_error"></span>
+            </div>
+            <div class="form-group">
+                <input type="password" id="password" name="password" placeholder="Password" required>
+                <span class="error-message" id="password_error" name="password_error"></span>
+            </div>
+            <div class="form-group">
+              <input type="password" id="cpassword" name="confirm_password" placeholder="Confirm Password" required>
+              <span class="error-message" id="confirm_password_error" name="confirm_password_error"></span>
+            </div>
+          
+            <div class="form-group">
+                <input type="checkbox" id="confirm" name="confirm" required>
+                <label for="confirm">Confirm the Credentials</label>
+            </div>
+            <input type="submit" value="Register">
+            <div class="registeration-link">
+              <a href="{% url 'login' %}">Login Here..</a>
+          </div>
+        </form>
+    </div>
+
+
+<!---------Footer-------->
+<footer>
+    <h3><sup>The</sup><span>KoM</span><span id="paroo">Paro</span></h3>
+   <div class="footercontainer">
+    
+    <div class="socialicons">
+        <a href=""><i class="fa-brands fa-facebook"></i></a>
+        <a href=""><i class="fa-brands fa-instagram"></i></a>
+        <a href=""><i class="fa-brands fa-google-plus"></i></a>
+        <a href=""><i class="fa-brands fa-youtube"></i></a>
+    </div>
+    
+   </div>
+</footer>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+      document.getElementById("registrationForm").addEventListener("submit", function(event) {
+          event.preventDefault(); // Prevent default form submission
+
+          console.log("Form submission initiated.");
+
+          var username = document.getElementById("username").value;
+          var mobile = document.getElementById("mobile").value;
+          var password = document.getElementById("password").value;
+          var confirmPassword = document.getElementById("cpassword").value;
+          var email = document.getElementById("email").value;
+
+          console.log("Username:", username);
+          console.log("Mobile:", mobile);
+          console.log("Email:", email);
+          console.log("Password:", password);
+          console.log("Confirm Password:", confirmPassword);
+
+          // Reset error messages
+          document.getElementById("username_error").innerText = "";
+          document.getElementById("mobile_error").innerText = "";
+          document.getElementById("email_error").innerText = "";
+          document.getElementById("password_error").innerText = "";
+          document.getElementById("confirm_password_error").innerText = "";
+
+          // Reset custom validity for each input field
+          document.getElementById("username").setCustomValidity("");
+          document.getElementById("mobile").setCustomValidity("");
+          document.getElementById("email").setCustomValidity("");
+          document.getElementById("password").setCustomValidity("");
+          document.getElementById("cpassword").setCustomValidity("");
+
+          // Validate username
+          if (!/^[a-zA-Z][a-zA-Z0-9_]{0,19}$/.test(username)) {
+              console.log("Invalid username format detected.");
+              document.getElementById("username").setCustomValidity("Username can only contain alphabets, numbers, and underscores, and must start with an alphabet.");
+              return false;
+          }
+          
+          // Validate mobile number
+          if (!/^\d{10}$/.test(mobile)) {
+                    console.log("Invalid mobile number format detected.");
+                    document.getElementById("mobile").setCustomValidity("Mobile number only Numbers allowed & must be 10 digits long.");
+                    return false;
+          
+            }
+          
+
+          // Validate email
+          if (!/^\w+@\w+\.com$/.test(email)) {
+              console.log("Invalid email format detected.");
+              document.getElementById("email").setCustomValidity("Email must end with @gmail.com.");
+              return false;
+          }
+
+          // Validate password
+          if (!/^[a-zA-Z][\w@#$]{6,15}$/.test(password)) {
+              console.log("Invalid password format detected.");
+              document.getElementById("password").setCustomValidity("Password must start with an alphabet and can only contain alphabets, numbers, and the characters @, #, $, or _, and must be between 8 and 16 characters long.");
+              return false;
+          }
+
+          // Validate confirm password
+          if (confirmPassword !== password) {
+              console.log("Passwords do not match.");
+              document.getElementById("cpassword").setCustomValidity("Passwords do not match.");
+              return false;
+          }
+
+          // Send form data using AJAX
+          fetch(this.action, {
+              method: 'POST',
+              body: new FormData(this),
+          })
+          .then(response => {
+              // Check response status
+              if (response.ok) {
+                  // Registration successful, redirect to login page
+                  window.location.href = "{% url 'login' %}";
+              } else {
+                  // Registration failed, parse JSON response and show errors in alert box
+                  response.json().then(data => {
+                      var errorMessages = [];
+                      for (var key in data.message) {
+                          errorMessages.push(data.message[key][0]);
+                      }
+                      alert(errorMessages.join(" "));
+                  });
+              }
+          })
+          .catch(error => {
+              console.error('Error:', error);
+          });
+      });
+
+      // Add event listeners to input fields to reset custom validity when input changes
+      document.getElementById("username").addEventListener("input", function() {
+          this.setCustomValidity("");
+      });
+      document.getElementById("mobile").addEventListener("input", function() {
+                this.setCustomValidity("");
+      });
+      document.getElementById("email").addEventListener("input", function() {
+          this.setCustomValidity("");
+      });
+      document.getElementById("password").addEventListener("input", function() {
+          this.setCustomValidity("");
+      });
+      document.getElementById("cpassword").addEventListener("input", function() {
+          this.setCustomValidity("");
+      });
+  });
+</script>
+
+
+</body>
+</html>

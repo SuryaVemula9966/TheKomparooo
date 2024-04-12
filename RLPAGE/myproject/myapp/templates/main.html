@@ -1,0 +1,914 @@
+
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'css/First.css' %}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+        <title>Menu Button</title>
+        <!---Bootstarp css-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" 
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    
+         <!---Bootstarp js-->
+         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
+         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+     
+        <style>
+                       
+* {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+  }
+  body{
+    background-color:#E1F2F7;
+ 
+  }
+ .content {
+    margin-top: 80px; /* Adjust based on the height of your header */
+    margin-bottom: 50%; /* Adjust the gap between content and footer */
+    background-color: #E1F2F7;
+    overflow-y:auto; /* Add scrollbar if content exceeds viewport height */
+    height: calc(100vh - 180px); /* Calculate height to fit between header and footer */
+} 
+  .action {
+    position: absolute;
+    top: 10px;
+    right: 30px;
+    box-sizing:border-box;
+    border-radius: 40px;
+    padding: 1px;
+    box-shadow: 5px 6px 14px black;
+    background:white;
+    position: fixed;
+}
+
+.action .profile {
+    position: relative;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.action .profile img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.action .menu {
+    position: absolute;
+    top: 120px;
+    right: -10px;
+    padding: 10px 20px;
+    background: white;
+    width: 200px;
+    box-sizing: 0 5px 25px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    transition: .5s;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.action .menu.active {
+    top: 80px;
+    visibility: visible;
+    opacity: 1;
+}
+
+.action .menu::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    right: 28px;
+    width: 20px;
+    height: 20px;
+    background: #fff;
+    transform: rotate(45deg);
+}
+
+.action .menu h3 {
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+    padding: 20px 0;
+    font-weight: 500;
+    color: #555;
+    line-height: 1.2em;
+}
+
+.action .menu h3 span {
+    font-size: 14px;
+    color: #cecece;
+    font-weight: 400;
+}
+
+.action .menu ul li {
+    list-style: none;
+    padding: 10px 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+}
+
+.action .menu ul li img {
+    max-width: 20px;
+    margin-right: 10px;
+    opacity: .5;
+    transition: 0.5s;
+}
+
+.action .menu ul li:hover img {
+    opacity: 1;
+}
+
+.action .menu ul li a {
+    display: inline-block;
+    text-decoration: none;
+    color: #555;
+    font-weight: 500;
+    transition: 0.5s;
+}
+
+.action .menu ul li:hover a {
+    color: #eb2366;
+}
+  .navbar{
+    position: fixed;
+    height:80px;
+    width:100%;
+    background-color:darkgreen;
+    box-sizing:border-box;
+    border-radius: 8px;
+    padding: 1px;
+    box-shadow: 5px 6px 14px black;
+    top:0;
+    z-index:1000;
+   
+  }
+  
+  .container1 sup{
+    color:red;
+    font-size:30px;
+    font-family: "Brush Script MT", cursive;
+  }
+  .container1 span{
+    color:rgb(238, 196, 27);
+    font-size:40px;
+    font-family: Georgia, serif;
+    font-weight:500px;
+  }
+  #paroo{
+    color:#E75480;
+    font-size:40px;
+    font-family: Georgia, serif;
+    font-weight:500px;
+  }
+  
+
+  
+    
+  /* Dropdown container */
+  .dropdown {
+    position: relative;
+    display: inline-block;
+    }
+    
+    /* Dropdown button */
+    .dropbtn {
+    background-color: #fff;
+    color: white;
+    border-radius:18px;
+    padding: 8px;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+    }
+    
+    /* Links inside the dropdown */
+    .dropbtn a {
+    color: black;
+    padding: 6px 10px;
+    text-decoration: none;
+    display: block;
+    }
+  
+
+.box {
+    background-color: #fff;
+    width: 720px;
+    height:550px;
+    border:none;
+    border-radius:none;
+    padding: 10px;
+    margin-bottom: 20px;
+    background-color:#E1F2F7 ;
+    background-size: cover; 
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.9;
+    box-shadow: 4px 4px 13px rgba(8,8,8,0.941);
+    padding:20px;
+    width:415px;
+    position: relative;
+    top: 150px;
+    left:-115px;
+
+    
+    
+}
+.box select{
+    width: 380px;
+    height: 70px;
+    height:30px;
+  
+}
+.box .selectpicker{
+    width: 380px;
+    height:30px;
+    font-size: 20px;
+}
+.box #priceRangeSelect{
+    width: 380px;
+    height:30px;
+    font-size: 20px;
+}
+.box input{
+    width: 380px;
+    height:30px;
+    padding: 7px;
+}
+
+.box h2 {
+    margin-top: 0;
+    font-size: 20px;
+}
+
+.list{
+    display: flex;
+    position:fixed;
+    flex-wrap: wrap;
+    width: 92%;
+    margin-left: 300px;
+    margin-bottom: 50px;
+    top:160px;
+    width:1050px;
+    position: absolute;
+}
+ .list li {
+    left: -200px;
+    margin-bottom: 30px;
+    padding: 20px;
+    list-style-type: none;
+    -o-box-shadow: 0 0 0.6em #ccc;
+    -moz-box-shadow: 0 0 0.6em #ccc;
+    -ms-box-shadow: 0 0 0.6em #ccc;
+    box-shadow: 2px 2px 15px rgba(8,8,8,0.941);
+    width:1050px;
+    
+}
+ .list li:hover {
+	background:#fff;
+    transition:0.5s all;
+	-webkit-transition:0.5s all;
+	-moz-transition:0.5s all;
+	-o-transition:0.5s all;
+	-ms-transition:0.5s all;
+}
+ .list li img{
+	float: left;
+    margin-right: 0;
+    padding-bottom: 0;
+    border: 1px solid #d9d9dc;
+    padding: 0;
+    width: 22%;
+    background-color: #fff;
+}
+ .list li.alt{ background:gray; }
+ .list li p {
+    overflow: hidden;
+    word-wrap: break-word;
+    color: #C1C1C1;
+    font-size: 13px;
+    margin-top: 15px;
+}
+ .list li .title{
+	overflow: hidden;
+    word-wrap: break-word;
+    width:720px;
+    font-size: 16px;
+    text-decoration: none;
+    color: #000000;
+    font-weight: 500;
+    letter-spacing: 1px;
+  
+}
+.list li .adprice{
+	display:block;
+	font-size:16px;
+	display: block;
+    font-size: 16px;
+    color: #f4f68a;
+    margin: 5px 0 0 0;
+}
+.stars {
+  display: block;
+  font-size: 16px;
+  color: rgb(101, 72, 243);
+  margin: 5px 0 0 0;
+}
+.month{
+    display: block;
+    font-size: 16px;
+    color: rgb(237, 186, 90);
+    margin: 5px 0 0 0;
+}
+.mrp{
+    display: block;
+    font-size: 18px;
+    color: rgb(246, 70, 70);
+    margin: 5px 0 0 0;
+}
+.discount{
+    display: block;
+    font-size: 20px;
+    color: rgb(246, 70, 70);
+    margin: 5px 0 0 0;
+}
+.price{
+    display: block;
+    font-size: 28px;
+    color: rgba(11, 10, 10, 0.937);
+    margin: 5px 0 0 0;
+}
+ .list li .list-left {
+    width: 50%;
+    margin-left: 7%;
+    float: left;
+}
+.list li .list-right1{
+   
+   
+    float: right;
+    text-align: right;
+    top:80px;
+  }
+
+ .list  a{
+  text-decoration: none;
+  font-size: 20px;
+  top:75px;
+}
+ .list-right1 .amz{
+  position:relative;
+  color: white;
+  float:right;
+  background-color:  #01a185;
+  padding: 12px;
+  border-radius: 5px;
+  text-decoration:none;
+  text-align: right;
+  top:70px;
+}
+
+.list-right1 .pricses{
+  color: white;
+  float:right;
+  background-color: black;
+  border-radius: 5px;
+  text-align: right;
+}
+.list-right1 .pricses{
+    text-decoration:none;
+    color: white;
+    float:right;
+    background-color: black;
+    border-radius: 5px;
+    text-align: right;
+  }
+.mbrands{
+    color:black;
+}
+
+.nextpage{
+    margin-bottom: 200px;
+}
+#pagination a{
+    text-decoration:none;
+    background-color:black;
+    padding:7px;
+    color:white;
+}
+#pagination a.sec:hover{
+    background-color:white;
+    color:black;
+    border:1px solid black;
+}
+ 
+  footer {
+    box-sizing:border-box;
+    border-radius: 8px;
+    padding: 1px;
+    box-shadow: 5px 6px 14px black;
+    background-color:darkgreen;
+    position: fixed;
+    width:100%;
+    left: 0;
+    bottom: 0;
+    z-index:1000;
+   
+}
+    .footercontainer{
+    width:100%;
+    height:100px;
+    
+    }
+    footer h3{
+    position:absolute;
+    width:280px;
+    height:60px;
+    left:650px;
+    }
+    footer sup{
+        color:red;
+        font-size:30px;
+        font-family: "Brush Script MT", cursive;
+    }
+
+    footer span{
+        color:rgb(240, 211, 19);
+        font-size:40px;
+        font-family: Georgia, serif;
+        font-weight:500px;
+    }
+    #paroo{
+        color:#E75480;
+        font-size:40px;
+        font-family: Georgia, serif;
+        font-weight:500px;
+    }
+    .socialicons{
+    display:flex;
+    justify-content:center;
+    padding:50px 8px 8px
+    }
+    .socialicons a{
+    text-decoration:none;
+    padding:10px;
+    margin:10px;
+    border-radius:50%;
+    }
+    .socialicons a i{
+    font-size:1.5em;
+    color:black;
+    opacity:0.9;
+    }
+    .socialicons a:hover{
+    background-color:#111;
+    transition:0.5s
+    }
+    .socialicons a i:hover{
+    color:white;
+    transition:0.5s;
+    }
+    .sidebar{
+        position:fixed;
+    }
+        </style>
+    </head>
+    <body>
+        <nav class="navbar">
+            <div class="container">
+             <h3><a href="{% url 'first' %}" style="text-decoration: none"><sup>The</sup><span>KoM</span><span id="paroo">Paro</span></a></h3>
+    
+              <div class="action">
+                <div class="profile" onclick="menuToggle()">
+                    {% if user.profile_image %}
+                    <img src="{{ user.profile_image.url }}  " alt="">
+    
+                    {% endif %}
+                
+                </div>
+                <div class="menu">
+                    
+                   <h3>welcome {{username}}</h3>
+                   
+                    <ul>
+                        <li><i class="fa fa-user">&nbsp;&nbsp;&nbsp;&nbsp;<a href="{% url 'profile' %}">My Profile</a></i></li>
+                        <li><img src="envelope.png" alt=""><a href="#">Wallet</a></li>
+                        <li><img src="question.png" alt=""><a href="#">Help</a></li>
+                        <li><img src="log-out.png" alt=""><a href="{% url 'first' %}">Log-Out</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+           
+        <div class="container">
+            <div class="sidebar">
+                <div class="box">
+                    <h2>Devices</h2>
+                    <select id="deviceSelect">
+                        <option value="">Select Device</option>
+                        <option value="tv">TV</option>
+                        <option value="laptop">Laptop</option>
+                        <option value="mobile">Mobiles</option>
+                      <option value="tablet">Tablets</option>
+                        <!-- Add more options for other devices -->
+                    </select><br><br><br>
+                
+                    <h2>Price Range</h2>
+                    <select id="priceRangeSelect">
+                        <option value="0-5000">&#8377;0 - &#8377;10000</option>
+                        <option value="10001-20000">&#8377;10001 - &#8377;20000</option>
+                        <option value="20001-30000">&#8377;20001 - &#8377;30000</option>
+                        <option value="30001-40000">&#8377;30001 - &#8377;40000</option>
+                        <option value="40001-50000">&#8377;40001 - &#8377;50000</option>
+                        <option value="50001-60000">&#8377;50001 - &#8377;60000</option>
+                        <option value="60001-70000">&#8377;60001 - &#8377;70000</option>
+                        <option value="70001-80000">&#8377;70001 - &#8377;80000</option>
+                        <option value="80001-90000">&#8377;80001 - &#8377;90000</option>
+                        <option value="90001-100000">&#8377;90001 - &#8377;100000</option>
+                        <option value="100001-110000">&#8377;100001 - &#8377;110000</option>
+                        <option value="110001-120000">&#8377;110001 - &#8377;120000</option>
+                        <option value="120001-130000">&#8377;120001 - &#8377;130000</option>
+                        <option value="130001-140000">&#8377;130001 - &#8377;140000</option>
+                        <option value="140001-150000">&#8377;140001 - &#8377;150000</option>
+                       
+                    </select><br><br><br>
+    
+                   <h2 class="sear-head">Brand name</h2>
+                    <select class="selectpicker" data-live-search="true" id="brandSelect">
+                      <option data-tokens="All">All</option>
+                      <option data-tokens="Iphone">Apple iPhone</option>
+                      <option data-tokens="Infinix">Infinix</option>
+                      <option data-tokens="Samsung Galaxy">Samsung Galaxy</option>
+                       <option data-tokens="realme ">realme </option>
+                       <option data-tokens="POCO">POCO</option>
+                       <option data-tokens="OnePlus ">OnePlus </option>
+                       <option data-tokens="iQOO ">iQOO </option>
+                       <option data-tokens="Redmi ">Redmi </option>	
+                       <option data-tokens="itel ">Itel </option>
+                       <option data-tokens="Nokia ">Nokia</option>
+                       <option data-tokens="OPPO ">OPPO</option>
+                       <option data-tokens="iQOO ">iQOO </option>
+
+                    </select>
+                </div>
+            </div>
+            
+        
+             <div class="list" id="MobileList">
+                <a href="#">
+                    {% for mobile, amazon_price in mobiles_with_prices %}
+
+                    <li>
+                      <img src="{{ mobile.a_image_url}}" alt="">
+                    <section class="list-left">
+                    
+                    <h5 class="title">{{ mobile.title }}</h5>
+                    <span class="stars">{{ mobile.f_rating }}</span>
+                    <span class="stars">{{ mobile.a_rating }}</span>
+                    <span class="stack">{{ mobile.a_availability }}</span><br>
+                    <span class="stack">{{ mobile.f_availability }}</span><br>
+                    {% comment %} <table>
+                    <tbody>
+                        <tr class="mbrands">
+                            <td>
+                                <span class="brands">{{ amazon_price.brand }}</span>
+                            </td>
+                            <td>
+                                <span class="values">{{ amazon_price.value }}</span>
+                            </td>
+                        </tr><br>
+                        <tr>
+                            <td>
+                                <span>{{ amazon_price.model }}</span>
+                            </td>
+                            <td>
+                                <span>{{ amazon_price.value2 }}</span>
+                            </td>
+                        </tr><br>
+                        <tr>
+                            <td>
+                                <span>{{ amazon_price.network }}</span>
+                            </td>
+                            <td>
+                                <span>{{ amazon_price.value3 }}</span>
+                            </td>
+                        </tr><br>
+                        <tr>
+                            <td>
+                                <span>{{ amazon_price.operating }}</span>
+                            </td>
+                            <td>
+                                <span>{{ amazon_price.value4 }}</span>
+                            </td>
+                        </tr><br>
+                        <tr>
+                            <td>
+                                <span>{{ amazon_price.cellular }}</span>
+                            </td>
+                            <td>
+                                <span>{{ amazon_price.value5 }}</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table> {% endcomment %}
+                    </section>
+                    <section class="list-right">
+                        
+                    </section><br>
+                    <section class="list-right1">
+                  
+                        <button class="amz">Amazon<a href="{{ mobile.a_product }}" class="pricses"><span>-&#x20b9;{{amazon_price.price}}</span></a></button><br>
+                    
+                    </section>
+                    <div class="clearfix"></div>
+                    </li> 
+                    {% endfor %} 
+                    </a>
+                    
+                   
+                    <div id="pagination">
+                        <a href="#" id="prev">Previous</a>
+                        <a href="" class="sec">1</a>
+                        <a href="" class="sec">2</a>
+                        <a href="" class="sec">3</a>
+                        <a href="" class="sec">4</a>
+                        <a href="" class="sec">5</a>
+                        <a href="" class="sec">6</a>
+                        <a href="" class="sec">7</a>
+                        <a href="" class="sec">8</a>
+                        <a href="" class="sec">9</a>
+                        <a href="#" id="next">Next</a>
+                      </div>  
+                </div>
+              
+         
+            </div>
+             
+            
+         
+        <!---------Footer-------->
+        <footer>
+            <h3><sup>The</sup><span>KoM</span><span id="paroo">Paro</span></h3>
+           <div class="footercontainer">
+            
+            <div class="socialicons">
+                <a href=""><i class="fa-brands fa-facebook"></i></a>
+                <a href=""><i class="fa-brands fa-instagram"></i></a>
+                <a href=""><i class="fa-brands fa-google-plus"></i></a>
+                <a href=""><i class="fa-brands fa-youtube"></i></a>
+            </div>
+            
+           </div>
+        </footer>
+    
+         
+        <script>
+            // JavaScript code for filtering mobiles based on the selected price range
+            document.addEventListener('DOMContentLoaded', function () {
+                const priceRangeSelect = document.getElementById('priceRangeSelect');
+                const productList = document.querySelectorAll('.list li');
+                // Add event listener for price range selection
+                priceRangeSelect.addEventListener('change', function () {
+                    const selectedRange = priceRangeSelect.value;
+                    filterProducts(selectedRange);
+                });
+                // Function to filter products based on price range
+                function filterProducts(range) {
+                    productList.forEach(product => {
+                        const productPriceString = product.querySelector('.list-right button').textContent.trim();
+                        const productPrice = parseInt(productPriceString.replace(/[^\d]/g, '')); // Remove non-digit characters and parse as integer
+                        const [min, max] = range.split('-').map(Number);
+                        if (productPrice >= min && productPrice <= max) {
+                            product.style.display = 'block';
+                        } else {
+                            product.style.display = 'none';
+                        }
+                    });
+                }
+            });
+/*brand name */
+document.addEventListener('DOMContentLoaded', function () {
+    const brandSelect = document.getElementById('brandSelect');
+    const productList = document.querySelectorAll('.list li');
+    brandSelect.addEventListener('change', function () {
+        const selectedBrand = brandSelect.value;
+        filterProductsByBrand(selectedBrand);
+    });
+    function filterProductsByBrand(brand) {
+        productList.forEach(product => {
+            const productBrand = product.querySelector('.list-left h6').textContent.trim().split(' ')[0];
+            console.log('Product Brand:', productBrand);
+            if (brand === 'All' || productBrand.toLowerCase() === brand.toLowerCase()) {
+                product.style.display = 'block';
+            } else {
+                product.style.display = 'none';
+            }
+        });
+    }
+    // Initial filtering
+    filterProductsByBrand('All');
+});
+
+
+
+
+
+
+
+
+
+
+
+
+            function redirectToNextPage() {
+            var selectedOption = document.getElementById("deviceSelect").value;
+            if (selectedOption === "TV") {
+                window.location.href = "next_page.html"; // Replace "next_page.html" with the actual URL of the next page
+            }
+        }
+        document.addEventListener('DOMContentLoaded', function () {
+            const deviceSelect = document.getElementById('deviceSelect');
+
+            deviceSelect.addEventListener('change', function () {
+                const selectedDevice = deviceSelect.value;
+                if (selectedDevice === 'tv') {
+                    window.location.href = 'tv.html'; // Change 'tv.html' to your actual TV page URL
+                }
+                
+                // Add other conditions for different devices and their respective URLs
+            });
+        });
+        document.addEventListener('DOMContentLoaded', function () {
+            const deviceSelect = document.getElementById('deviceSelect');
+
+            deviceSelect.addEventListener('change', function () {
+                const selectedDevice = deviceSelect.value;
+                if (selectedDevice === 'laptop') {
+                    window.location.href = 'laptop.html'; // Change 'tv.html' to your actual TV page URL
+                }
+                // Add other conditions for different devices and their respective URLs
+            });
+        });
+
+
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const productList = document.querySelectorAll('.list li');
+            const prevButton = document.getElementById("prev");
+            const nextButton = document.getElementById("next");
+            const pages = document.querySelectorAll(".sec");
+            const productsPerPage = 5; // Adjust this number according to your requirement
+            let currentPageIndex = 0;
+            // Function to show products for the current page
+            function showProducts(pageIndex) {
+                const start = pageIndex * productsPerPage;
+                const end = start + productsPerPage;
+                productList.forEach((product, index) => {
+                    if (index >= start && index < end) {
+                        product.style.display = 'block';
+                    } else {
+                        product.style.display = 'none';
+                    }
+                });
+            }
+            // Show the initial page
+            showProducts(currentPageIndex);
+            // Event listeners for prev and next buttons
+            prevButton.addEventListener("click", function () {
+                if (currentPageIndex > 0) {
+                    currentPageIndex--;
+                    showProducts(currentPageIndex);
+                }
+            });
+            nextButton.addEventListener("click", function () {
+                const maxPageIndex = Math.ceil(productList.length / productsPerPage) - 1;
+                if (currentPageIndex < maxPageIndex) {
+                    currentPageIndex++;
+                    showProducts(currentPageIndex);
+                }
+            });
+            // Event listener for page buttons
+            pages.forEach((page, index) => {
+                page.addEventListener("click", function () {
+                    currentPageIndex = index;
+                    showProducts(currentPageIndex);
+                });
+            });
+        });
+            // Function to update the styling of pagination buttons
+            function updatePaginationButtons() {
+                pages.forEach((page, index) => {
+                    if (index === currentPageIndex) {
+                        page.classList.add('active');
+                    } else {
+                        page.classList.remove('active');
+                    }
+                });
+            }
+
+
+  // Show the initial page
+  showPage(currentPageIndex);
+
+  // Event listeners for prev and next buttons
+  prevButton.addEventListener("click", function() {
+    if (currentPageIndex > 0) {
+      currentPageIndex--;
+      showPage(currentPageIndex);
+    }
+  });
+
+  nextButton.addEventListener("click", function() {
+    if (currentPageIndex < pages.length - 1) {
+      currentPageIndex++;
+      showPage(currentPageIndex);
+    }
+  });
+
+  // Event listener for page buttons
+  pages.forEach((page, index) => {
+    page.addEventListener("click", function() {
+      currentPageIndex = index;
+      showPage(currentPageIndex);
+    });
+  });
+});
+
+
+
+function menuToggle() {
+    const toggleMenu = document.querySelector(".menu");
+    toggleMenu.classList.toggle('active')
+}
+
+    
+window.addEventListener("scroll", function() {
+    var headerHeight = document.querySelector("header").offsetHeight;
+    var footerHeight = document.querySelector("footer").offsetHeight;
+    var content = document.querySelector(".content");
+    var scrollPosition = window.scrollY;
+
+    // Calculate the distance between the top of the content and the top of the viewport
+    var contentTopDistance = content.getBoundingClientRect().top;
+
+    // Calculate the maximum scroll position to keep the content above the footer
+    var maxScrollPosition = document.body.clientHeight - window.innerHeight - footerHeight;
+
+    // Adjust the margin top of the content based on scroll position and content position
+    if (scrollPosition > headerHeight && scrollPosition < maxScrollPosition && contentTopDistance > headerHeight) {
+        content.style.marginTop = (scrollPosition - headerHeight) + "px";
+    } else if (scrollPosition <= headerHeight) {
+        content.style.marginTop = "0";
+    }
+});
+
+
+
+
+
+   
+
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const brandSelect = document.getElementById('brandSelect');
+
+        brandSelect.addEventListener('change', function () {
+            const selectedBrand = brandSelect.value;
+            filterMobilesByBrand(selectedBrand);
+        });
+
+        function filterMobilesByBrand(brand) {
+            const mobileList = document.getElementById('MobileList'); // Change 'MobileList' to the ID of your product list container
+            const mobiles = mobileList.querySelectorAll('li');
+
+            mobiles.forEach(mobile => {
+                const mobileBrand = mobile.querySelector('.title').textContent.trim().split(' ')[0];
+
+                if (brand === 'All' || mobileBrand === brand) {
+                    mobile.style.display = 'block';
+                } else {
+                    mobile.style.display = 'none';
+                }
+            });
+        }
+    });
+
+
+  
+    
+        </script>
+    
+    </body>
+</html>
